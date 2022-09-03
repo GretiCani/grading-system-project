@@ -78,6 +78,17 @@ services:
     depends_on:
       - eureka-server
       - gateway-service
+
+  course-service:
+    build:
+      context: ../course-service
+      dockerfile: Dockerfile
+    networks:
+      - dev_network
+    
+    depends_on:
+      - eureka-server
+      - gateway-service
       
 networks:
   dev_network:

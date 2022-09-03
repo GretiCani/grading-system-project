@@ -39,6 +39,18 @@ spring:
             - Path=/notification-service/**
           filters:
             - StripPrefix=1
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/notification-service/**
+          filters:
+            - StripPrefix=1
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/course-service/**
+          filters:
+            - StripPrefix=1
 
 
 

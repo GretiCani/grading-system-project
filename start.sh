@@ -28,6 +28,11 @@ mvn clean package -DskipTests
 
 
 cd ..
+cd ./course-service
+mvn clean package -DskipTests
+
+
+cd ..
 
 cd ./docker
 
