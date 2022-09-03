@@ -1,0 +1,82 @@
+version: '3.7'
+
+services:
+
+  # zipkin:
+  #   image: openzipkin/zipkin
+  #   ports:
+  #     - "9411:9411"
+  #   restart: always
+  #   networks:
+  #     - interview_reports_network
+
+  # auth-server:
+  #   build:
+  #     context: ./auth-server
+  #     dockerfile: Dockerfile
+  #   networks:
+  #     -   interview_reports_network
+  #   ports:
+  #     - 9000:9000
+
+  eureka-server:
+    build:
+      context: ./discovery-server
+      dockerfile: Dockerfile
+    networks:
+      -   interview_reports_network
+    ports:
+      - 8080:8080
+
+
+  gateway-service:
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
+    networks:
+      -   interview_reports_network
+    ports:
+      - 8081:8081
+    
+    depends_on:
+      - eureka-server
+
+  question-service:
+    build:
+      context: ./question-service
+      dockerfile: Dockerfile
+    networks:
+      - interview_reports_network
+    
+    depends_on:
+      - eureka-server
+      - gateway-service
+  
+  application-service:
+    build:
+      context: ./application-service
+      dockerfile: Dockerfile
+    networks:
+      - interview_reports_network
+    
+    depends_on:
+      - eureka-server
+      - gateway-service
+
+  interview-service:
+    build:
+      context: ./interview-service
+      dockerfile: Dockerfile
+    networks:
+      - interview_reports_network
+    
+    depends_on:
+      - eureka-server
+      
+networks:
+  interview_reports_network:
+    external: true
+     
+
+
+      

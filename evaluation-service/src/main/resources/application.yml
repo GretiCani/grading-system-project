@@ -1,0 +1,10 @@
+
+server:
+  port: 8085
+
+spring:
+  application:
+    name: evaluation-service
+  cloud:
+    config:
+      enabled: true
