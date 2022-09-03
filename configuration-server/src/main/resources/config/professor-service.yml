@@ -21,33 +21,3 @@ eureka:
     prefer-ip-address: true
 server:
   port: 8083
-
-
-
----
-
-spring:
-  application:
-    name: professor-service
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://auth-server:9000
-          jwk-set-uri: http://auth-server:9000/oauth2/jwks
-  zipkin:
-    base-url: http://zipkin:9411
-  profiles:
-    active: docker
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8080/eureka
-    fetch-registry: true
-    register-with-eureka: true
-  instance:
-    hostname: localhost
-    prefer-ip-address: true
-server:
-  port: 8083

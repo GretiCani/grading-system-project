@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    restart: always
+    networks:
+      - dev_network
+
+  auth-server:
+    build:
+      context: ../auth-server
+      dockerfile: Dockerfile
+    networks:
+      -   dev_network
+    ports:
+      - 9000:9000
+      
+networks:
+  dev_network:
+    external: true

@@ -2,79 +2,85 @@ version: '3.7'
 
 services:
 
-  # zipkin:
-  #   image: openzipkin/zipkin
-  #   ports:
-  #     - "9411:9411"
-  #   restart: always
-  #   networks:
-  #     - interview_reports_network
-
-  # auth-server:
+  # configuration-server:
   #   build:
-  #     context: ./auth-server
+  #     context: ../configuration-server
   #     dockerfile: Dockerfile
   #   networks:
-  #     -   interview_reports_network
+  #     -   dev_network
   #   ports:
-  #     - 9000:9000
+  #     - 9999:9999
+  #   volumes:
+  #     - '../configuration-server/src/main/resources/config:/apt/app/config'
 
   eureka-server:
     build:
-      context: ./discovery-server
+      context: ../discovery-server
       dockerfile: Dockerfile
     networks:
-      -   interview_reports_network
+      - dev_network
     ports:
       - 8080:8080
 
 
   gateway-service:
     build:
-      context: ./gateway-service
+      context: ../gateway-service
       dockerfile: Dockerfile
     networks:
-      -   interview_reports_network
+      -   dev_network
     ports:
       - 8081:8081
     
     depends_on:
       - eureka-server
 
-  question-service:
+  professor-service:
     build:
-      context: ./question-service
+      context: ../professor-service
       dockerfile: Dockerfile
     networks:
-      - interview_reports_network
+      - dev_network
     
     depends_on:
       - eureka-server
       - gateway-service
   
-  application-service:
+  student-service:
     build:
-      context: ./application-service
+      context: ../student-service
       dockerfile: Dockerfile
     networks:
-      - interview_reports_network
+      - dev_network
     
     depends_on:
       - eureka-server
       - gateway-service
 
-  interview-service:
+  evaluation-service:
     build:
-      context: ./interview-service
+      context: ../evaluation-service
       dockerfile: Dockerfile
     networks:
-      - interview_reports_network
+      - dev_network
     
     depends_on:
       - eureka-server
+      - gateway-service
+
+  notification-service:
+    build:
+      context: ../notification-service
+      dockerfile: Dockerfile
+    networks:
+      - dev_network
+    
+    depends_on:
+      - eureka-server
+      - gateway-service
       
 networks:
-  interview_reports_network:
+  dev_network:
     external: true
      
 

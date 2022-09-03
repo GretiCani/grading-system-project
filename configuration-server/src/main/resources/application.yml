@@ -9,5 +9,5 @@ spring:
     config:
       server:
         native:
-          search-locations: classpath:/config
+          search-locations: src/main/resources/config
         bootstrap: true
