@@ -64,28 +64,17 @@ spring:
             - Path=/application-service/**
           filters:
             - StripPrefix=1
-        - id: question-service
-          uri: lb://question-service
-          predicates:
-            - Path=/question-service/**
-          filters:
-            - StripPrefix=1
-        - id: interview-service
-          uri: lb://interview-service
-          predicates:
-            - Path=/interview-service/**
-          filters:
-            - StripPrefix=1
+
 
 
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka-server:8080/eureka
+      defaultZone: http://localhost:8080/eureka
     fetch-registry: true
     register-with-eureka: true
   instance:
-    hostname: eureka-server
+    hostname: localhost
     prefer-ip-address: true
 server:
   port: 8081
