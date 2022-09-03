@@ -20,7 +20,7 @@ import java.util.Arrays;
 @EnableConfigServer
 @RestController
 public class ConfigurationServerApplication {
-    
+
     public static void main(String[] args) {
         SpringApplication.run(ConfigurationServerApplication.class, args);
     }
