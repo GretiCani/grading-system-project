@@ -1,0 +1,57 @@
+server:
+  port: 9000
+
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://user:pass_123@bulding-cluster.ltijm.mongodb.net/?retryWrites=true&w=majority
+      database: user-db
+  main:
+    allow-bean-definition-overriding: true
+
+
+registeredClient:
+  clientId: ikub
+  clientSecret: secret
+  redirectUri: http://172.17.0.1:4200/authorized
+  issuerUri: http://auth-server:9000
+  tokenParam: id_token
+  roleClaim: authorities
+
+--- 
+
+server:
+  port: 9000
+  
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://user:pass_123@bulding-cluster.ltijm.mongodb.net/?retryWrites=true&w=majority
+      database: user-db
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: docker
+
+
+
+registeredClient:
+  clientId: ikub
+  clientSecret: secret
+  redirectUri: http://172.17.0.1:4200/authorized
+  issuerUri: http://auth-server:9000
+  tokenParam: id_token
+  roleClaim: authorities
