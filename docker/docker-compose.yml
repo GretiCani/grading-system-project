@@ -10,8 +10,6 @@ services:
   #     -   dev_network
   #   ports:
   #     - 9999:9999
-  #   volumes:
-  #     - '../configuration-server/src/main/resources/config:/apt/app/config'
 
   eureka-server:
     build:

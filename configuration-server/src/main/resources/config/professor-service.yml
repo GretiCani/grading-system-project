@@ -33,8 +33,6 @@ eureka:
 server:
   port: 8083
 
-courseService:
-  schema: http
-  host: course-service
-  port: 8087
-  path: /course/list
+resource:
+  courseService:
+    baseUrl: http://localhost:8087/course

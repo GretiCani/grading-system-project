@@ -35,3 +35,7 @@ eureka:
     prefer-ip-address: true
 server:
   port: 8083
+
+resource:
+  courseService:
+    baseUrl: http://course-service:8087/course

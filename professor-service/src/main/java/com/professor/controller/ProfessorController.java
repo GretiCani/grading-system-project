@@ -12,25 +12,15 @@ import org.springframework.web.reactive.function.client.WebClient;
 @RequestMapping("/professor")
 public class ProfessorController {
 
-    @Value("${courseService.schema}")
-    private String schema;
-    @Value("${courseService.host}")
-    private String host;
-    @Value("${courseService.port}")
-    private Integer port;
-    @Value("${courseService.path}")
-    private String path;
+    @Value("${resource.courseService.baseUrl}")
+    private String courseUrl;
+
 
     private final WebClient webClient;
 
     @GetMapping("/ok")
     public String ok(){
-        return "professor-service ok"+webClient.get()
-                .uri(uriBuilder -> uriBuilder.scheme(schema)
-                        .host(host)
-                        .port(port)
-                        .path(path)
-                        .build())
+        return "professor-service ok"+webClient.get().uri(courseUrl+"/list")
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();

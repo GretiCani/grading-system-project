@@ -23,4 +23,4 @@ eureka:
     hostname: eureka-server
     prefer-ip-address: true
 server:
-  port: 8083
+  port: 8084
