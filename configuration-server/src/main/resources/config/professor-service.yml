@@ -35,4 +35,6 @@ server:
 
 resource:
   courseService:
-    baseUrl: http://localhost:8087/course
+    baseUrl: http://course-service:8087/course
+  studentService:
+    baseUrl: http://localhost:8084/student

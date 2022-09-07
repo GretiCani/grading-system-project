@@ -1,32 +1,29 @@
 package com.professor.controller;
 
+import com.professor.model.EnrolledCourse;
+import com.professor.service.external.StudentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/professor")
 public class ProfessorController {
 
-    @Value("${resource.courseService.baseUrl}")
-    private String courseUrl;
 
+    private final StudentService studentService;
 
-    private final WebClient webClient;
-
-    @PreAuthorize("hasAuthority('ROLE_INSTRUCTOR')")
     @GetMapping("/ok")
     public String ok(){
-        return "professor-service ok"+webClient.get().uri(courseUrl+"/list")
-                .retrieve()
-                .bodyToMono(String.class)
-                .block();
+        return "notification-service ok";
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_INSTRUCTOR')")
+    @PostMapping("/add-student")
+    public ResponseEntity<EnrolledCourse> addCourseToStudent(@RequestBody EnrolledCourse course){
+        return ResponseEntity.ok(studentService.addCourseToStudent(course));
     }
 }

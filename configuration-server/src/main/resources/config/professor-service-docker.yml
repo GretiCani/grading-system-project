@@ -39,3 +39,5 @@ server:
 resource:
   courseService:
     baseUrl: http://course-service:8087/course
+  studentService:
+    baseUrl: http://student-service:8084/student
