@@ -52,22 +52,22 @@ public class CourseController {
     }
 
     @PostMapping("/assessment")
-    public ResponseEntity<Course> addAssessment(@RequestBody Course course){
-        return ResponseEntity.ok(courseService.add(course));
+    public ResponseEntity<AssessmentItem> addAssessment(@RequestBody AssessmentItem assessmentItem){
+        return ResponseEntity.ok(assessmentService.add(assessmentItem));
     }
     @PutMapping("/assessment/{id}")
-    public ResponseEntity<Course>updateAssessment(@PathVariable String id,@RequestBody  Course course){
-        return ResponseEntity.ok(courseService.update(id,course));
+    public ResponseEntity<AssessmentItem>updateAssessment(@PathVariable String id,@RequestBody  AssessmentItem assessmentItem){
+        return ResponseEntity.ok(assessmentService.update(id,assessmentItem));
     }
 
     @DeleteMapping("/assessment/{id}")
     public ResponseEntity<Void> deleteAssessment(@PathVariable String id){
-        courseService.delete(id);
+        assessmentService.delete(id);
         return ResponseEntity.ok().build();
     }
     @GetMapping("/assessment/list")
-    public ResponseEntity<List<Course>>listAssessment(){
-        return ResponseEntity.ok(courseService.list());
+    public ResponseEntity<List<AssessmentItem>>listAssessment(){
+        return ResponseEntity.ok(assessmentService.list());
     }
 
 
