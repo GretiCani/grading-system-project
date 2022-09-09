@@ -26,8 +26,6 @@ services:
       - '3000:3000'
     volumes:
       - grafana_data 
-    # env_file:
-    #   - grafana/config.monitoring
     depends_on:
       - prometheus
 

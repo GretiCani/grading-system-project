@@ -5,11 +5,14 @@ import com.course.entity.Course;
 import com.course.service.AssessmentService;
 import com.course.service.CourseService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/course")
@@ -20,6 +23,9 @@ public class CourseController {
 
     @GetMapping("/ok")
     public String ok(){
+        IntStream.range(0,10).forEach(index -> {
+            log.info("course-service  info log "+1);
+        });
         return "course-service ok";
     }
 

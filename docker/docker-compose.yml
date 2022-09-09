@@ -43,6 +43,9 @@ services:
     depends_on:
       - eureka-server
       - gateway-service
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
   
   student-service:
     build:
