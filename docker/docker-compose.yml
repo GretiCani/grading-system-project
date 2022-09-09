@@ -32,6 +32,9 @@ services:
     
     depends_on:
       - eureka-server
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
 
   professor-service:
     build:
@@ -57,6 +60,9 @@ services:
     depends_on:
       - eureka-server
       - gateway-service
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
 
   evaluation-service:
     build:
@@ -68,6 +74,9 @@ services:
     depends_on:
       - eureka-server
       - gateway-service
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
 
   notification-service:
     build:
@@ -79,6 +88,9 @@ services:
     depends_on:
       - eureka-server
       - gateway-service
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
 
   course-service:
     build:
@@ -90,6 +102,9 @@ services:
     depends_on:
       - eureka-server
       - gateway-service
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
       
 networks:
   dev_network:
