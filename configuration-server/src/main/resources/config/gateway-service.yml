@@ -21,6 +21,16 @@ spring:
             - Path=/application-service/**
           filters:
             - StripPrefix=1
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
 
 
 eureka:

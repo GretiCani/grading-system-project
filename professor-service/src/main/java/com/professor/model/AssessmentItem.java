@@ -1,4 +1,4 @@
-package com.course.entity;
+package com.professor.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Builder
 @Document(collection = "assessment-item")
-public class AssessmentItem extends BaseEntity{
+public class AssessmentItem{
 
     @Id
     private String id;

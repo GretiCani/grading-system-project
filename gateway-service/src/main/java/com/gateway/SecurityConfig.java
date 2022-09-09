@@ -13,6 +13,7 @@ public class SecurityConfig {
 	SecurityWebFilterChain securityFilterChain(ServerHttpSecurity http) {
 		http
 			.authorizeExchange()
+				.pathMatchers("/actuator/prometheus").permitAll()
 			.anyExchange()
 			.authenticated().and()
 			.oauth2ResourceServer().jwt();

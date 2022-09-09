@@ -25,6 +25,7 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 				.authorizeRequests()
+				.antMatchers("/actuator/prometheus").permitAll()
 				.anyRequest().authenticated()
 				.and().oauth2ResourceServer()
 				.jwt();

@@ -14,6 +14,17 @@ spring:
       uri: mongodb+srv://user:pass_123@bulding-cluster.ltijm.mongodb.net/?retryWrites=true&w=majority
       database: student-db
 
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+
 eureka:
   client:
     service-url:

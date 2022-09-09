@@ -23,6 +23,16 @@ spring:
     base-url: http://zipkin:9411
 #  profiles:
 #    active: docker
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
 
 eureka:
   client:
