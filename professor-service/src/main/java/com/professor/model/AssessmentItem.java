@@ -11,14 +11,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Data
 @Builder
-@Document(collection = "assessment-item")
 public class AssessmentItem{
 
-    @Id
-    private String id;
-    private String name;
-    private String weight;
     private String courseId;
+    private String studentId;
+    private Grade grade;
 
 
 

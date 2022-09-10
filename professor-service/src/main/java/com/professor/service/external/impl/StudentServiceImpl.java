@@ -1,6 +1,8 @@
 package com.professor.service.external.impl;
 
+import com.professor.model.AssessmentItem;
 import com.professor.model.EnrolledCourse;
+import com.professor.model.Grade;
 import com.professor.service.external.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,5 +28,15 @@ public class StudentServiceImpl implements StudentService {
                  .retrieve()
                  .bodyToMono(EnrolledCourse.class)
                  .block();
+    }
+
+    @Override
+    public EnrolledCourse addAssessmentToStudent(AssessmentItem a) {
+        return webClient.post()
+                .uri(studentServiceUrl+"/add-assessment/{courseId}/{studentId}",a.getCourseId(),a.getStudentId())
+                .body(Mono.just(a.getGrade()), Grade.class)
+                .retrieve()
+                .bodyToMono(EnrolledCourse.class)
+                .block();
     }
 }

@@ -1,5 +1,6 @@
 package com.professor.controller;
 
+import com.professor.model.AssessmentItem;
 import com.professor.model.EnrolledCourse;
 import com.professor.service.external.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -33,5 +34,12 @@ public class ProfessorController {
     public ResponseEntity<EnrolledCourse> addCourseToStudent(@RequestBody EnrolledCourse course){
 
         return ResponseEntity.ok(studentService.addCourseToStudent(course));
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_INSTRUCTOR')")
+    @PostMapping("/add-assessment")
+    public ResponseEntity<EnrolledCourse> addAssessmentToStudent(@RequestBody AssessmentItem assessmentItem){
+
+        return ResponseEntity.ok(studentService.addAssessmentToStudent(assessmentItem));
     }
 }

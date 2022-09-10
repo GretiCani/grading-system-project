@@ -1,6 +1,7 @@
 package com.student.controller;
 
 import com.student.entity.EnrolledCourse;
+import com.student.entity.Grade;
 import com.student.service.EnrolledCourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,5 +29,10 @@ public class StudentController {
     @PostMapping("/enrolled-course")
     public ResponseEntity<EnrolledCourse> addEnrolledCourse(@RequestBody EnrolledCourse enrolledCourse){
         return ResponseEntity.ok(enrolledCourseService.add(enrolledCourse));
+    }
+
+    @PostMapping("/add-assessment/{courseId}/{studentId}")
+    public ResponseEntity<EnrolledCourse> addAssessment(@PathVariable String courseId, @PathVariable String studentId, @RequestBody Grade grade){
+        return ResponseEntity.ok(enrolledCourseService.addAssessment(courseId,studentId,grade));
     }
 }
