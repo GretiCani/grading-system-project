@@ -2,6 +2,7 @@ package com.student.controller;
 
 import com.student.entity.EnrolledCourse;
 import com.student.entity.Grade;
+import com.student.model.Evaluation;
 import com.student.service.EnrolledCourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,8 +32,19 @@ public class StudentController {
         return ResponseEntity.ok(enrolledCourseService.add(enrolledCourse));
     }
 
+    @GetMapping("/enrolled-course/{courseId}/{studentId}")
+    public ResponseEntity<EnrolledCourse> findByCourseIdStudentId(@PathVariable String courseId, @PathVariable String studentId){
+        return ResponseEntity.ok(enrolledCourseService.findByCourseIdAndStudentId(courseId,studentId));
+    }
+
     @PostMapping("/add-assessment/{courseId}/{studentId}")
     public ResponseEntity<EnrolledCourse> addAssessment(@PathVariable String courseId, @PathVariable String studentId, @RequestBody Grade grade){
         return ResponseEntity.ok(enrolledCourseService.addAssessment(courseId,studentId,grade));
     }
+
+    @PostMapping("/add-grade")
+    public ResponseEntity<Long>addGrade(@RequestBody Evaluation e){
+        return ResponseEntity.ok(enrolledCourseService.updateGrades(e.getCourseId(),e.getStudentId(),e.getAssessmentId(),e.getGrade()));
+    }
+
 }

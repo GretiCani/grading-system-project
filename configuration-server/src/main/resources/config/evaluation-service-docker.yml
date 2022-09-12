@@ -7,8 +7,26 @@ spring:
         jwt:
           issuer-uri: http://auth-server:9000
           jwk-set-uri: http://auth-server:9000/oauth2/jwks
+      client:
+        registration:
+          ikub-client:
+            provider: spring
+            client-id: ikub
+            client-secret: secret
+            authorization-grant-type: client_credentials
+            scope: openid
+        provider:
+          spring:
+            issuer-uri: http://auth-server:9000
   zipkin:
     base-url: http://zipkin:9411
+  kafka:
+    client-id: ${spring.application.name}
+    bootstrap-servers: kafka:9092
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: Notification:com.evaluation.model.Notification
 
 management:
   endpoint:
@@ -32,3 +50,9 @@ eureka:
     prefer-ip-address: true
 server:
   port: 8086
+
+resource:
+  studentService:
+    baseUrl: http://student-service:8084/student
+kafkaTopics:
+  notification: notifications

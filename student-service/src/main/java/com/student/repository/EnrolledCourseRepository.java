@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface EnrolledCourseRepository extends MongoRepository<EnrolledCourse,String> {
 
     Optional<EnrolledCourse> findByCourseIdAndStudentId(String courseId, String studentId);
+
+
 }

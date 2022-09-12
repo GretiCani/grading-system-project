@@ -8,6 +8,25 @@ spring:
         jwt:
           issuer-uri: http://auth-server:9000
           jwk-set-uri: http://auth-server:9000/oauth2/jwks
+  cloud:
+    config:
+      enabled: true
+    function:
+      definition: sendNotification
+    stream:
+      kafka:
+        binder:
+          brokers: kafka:9092
+        bindings:
+          sendNotification-in-0:
+            consumer:
+              configuration:
+                value.deserializer: com.notification.model.converters.NotificationDeserializer
+      bindings:
+        sendNotification-in-0:
+          destination: notifications
+          consumer:
+            use-native-decoding: true
   zipkin:
     base-url: http://zipkin:9411
 #  profiles:

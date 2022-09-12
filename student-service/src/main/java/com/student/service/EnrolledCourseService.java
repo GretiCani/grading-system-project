@@ -7,4 +7,6 @@ public interface EnrolledCourseService {
 
     EnrolledCourse add(EnrolledCourse course);
     EnrolledCourse addAssessment(String courseId, String studentId, Grade grade);
+    EnrolledCourse findByCourseIdAndStudentId(String courseId, String studentId);
+    Long updateGrades(String courseId, String studentId, String assessmentId, String grade);
 }
