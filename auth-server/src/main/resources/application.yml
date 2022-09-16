@@ -11,7 +11,7 @@ logging:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://user:pass_123@bulding-cluster.ltijm.mongodb.net/?retryWrites=true&w=majority
+      uri: mongodb+srv://ikub:ikub123@bulding-cluster.ltijm.mongodb.net/?retryWrites=true&w=majority
       database: user-db
   main:
     allow-bean-definition-overriding: true
@@ -39,7 +39,7 @@ logging:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://user:pass_123@bulding-cluster.ltijm.mongodb.net/?retryWrites=true&w=majority
+      uri: mongodb+srv://ikub:ikub123@bulding-cluster.ltijm.mongodb.net/?retryWrites=true&w=majority
       database: user-db
   main:
     allow-bean-definition-overriding: true

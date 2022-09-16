@@ -33,7 +33,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public EnrolledCourse addAssessmentToStudent(AssessmentItem a) {
         return webClient.post()
-                .uri(studentServiceUrl+"/add-assessment/{courseId}/{studentId}",a.getCourseId(),a.getStudentId())
+                .uri(studentServiceUrl+"/{studentId}/add-assessment/{courseId}",a.getCourseId(),a.getStudentId())
                 .body(Mono.just(a.getGrade()), Grade.class)
                 .retrieve()
                 .bodyToMono(EnrolledCourse.class)

@@ -1,7 +1,9 @@
 package com.professor.controller;
 
 import com.professor.model.AssessmentItem;
+import com.professor.model.Course;
 import com.professor.model.EnrolledCourse;
+import com.professor.service.external.CourseService;
 import com.professor.service.external.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 
@@ -20,6 +23,7 @@ public class ProfessorController {
 
 
     private final StudentService studentService;
+    private final CourseService courseService;
 
     @GetMapping("/ok")
     public String ok(){
@@ -42,4 +46,12 @@ public class ProfessorController {
 
         return ResponseEntity.ok(studentService.addAssessmentToStudent(assessmentItem));
     }
+
+    @PreAuthorize("hasAuthority('ROLE_INSTRUCTOR')")
+    @GetMapping("/get-courses/{instructorId}")
+    public ResponseEntity<List<Course>> getCourses(@PathVariable String instructorId){
+        return ResponseEntity.ok(courseService.getCourses(instructorId));
+    }
+
+
 }

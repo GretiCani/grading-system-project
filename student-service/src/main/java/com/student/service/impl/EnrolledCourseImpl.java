@@ -7,9 +7,6 @@ import com.student.repository.EnrolledCourseRepository;
 import com.student.service.EnrolledCourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,10 +44,16 @@ public class EnrolledCourseImpl implements EnrolledCourseService {
 
     @Override
     public Long updateGrades(String courseId, String studentId, String assessmentId, String grade) {
-        Query query = new Query().addCriteria(Criteria.where("courseId").is(courseId))
-                .addCriteria(Criteria.where("studentId").is(studentId))
-                .addCriteria(Criteria.where("grades").elemMatch(Criteria.where("assessmentId").is(assessmentId)));
-        Update updateDefinition = new Update().set("grades.$.grade",grade);
-        return mongoTemplate.updateFirst(query,updateDefinition,EnrolledCourse.class).getModifiedCount();
+        return enrolledCourseRepository.updateGrades(courseId, studentId, assessmentId, grade);
+    }
+
+    @Override
+    public List<EnrolledCourse> findCoursesByStudentId(String studentId) {
+        return enrolledCourseRepository.findByStudentId(studentId);
+    }
+
+    @Override
+    public List<EnrolledCourse> findByCourseId(String courseId) {
+        return enrolledCourseRepository.findByCourseId(courseId);
     }
 }

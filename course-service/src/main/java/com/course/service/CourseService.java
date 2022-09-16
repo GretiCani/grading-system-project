@@ -12,4 +12,5 @@ public interface CourseService {
     Course update(String id,Course course);
     void delete(String id);
     List<Course> list();
+    List<Course> findByInstructor(String instructorId);
 }

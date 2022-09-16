@@ -52,6 +52,11 @@ public class CourseController {
         return ResponseEntity.ok(courseService.list());
     }
 
+    @GetMapping("/all/{instructorId}")
+    public ResponseEntity<List<Course>>listByInstructor(@PathVariable String instructorId){
+        return ResponseEntity.ok(courseService.findByInstructor(instructorId));
+    }
+
     @GetMapping("/assessment/{id}")
     public ResponseEntity<AssessmentItem>findAssessment(@PathVariable String id){
         return ResponseEntity.ok(assessmentService.find(id).orElse(null));

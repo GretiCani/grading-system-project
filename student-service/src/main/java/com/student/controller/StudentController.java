@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 @Slf4j
@@ -32,12 +33,22 @@ public class StudentController {
         return ResponseEntity.ok(enrolledCourseService.add(enrolledCourse));
     }
 
-    @GetMapping("/enrolled-course/{courseId}/{studentId}")
+    @GetMapping("/enrolled-course/{courseId}")
+    public ResponseEntity<List<EnrolledCourse>> getEnrolledCourseByCourseId(@PathVariable String courseId){
+        return ResponseEntity.ok(enrolledCourseService.findByCourseId(courseId));
+    }
+
+    @GetMapping("/{studentId}/enrolled-course/{courseId}")
     public ResponseEntity<EnrolledCourse> findByCourseIdStudentId(@PathVariable String courseId, @PathVariable String studentId){
         return ResponseEntity.ok(enrolledCourseService.findByCourseIdAndStudentId(courseId,studentId));
     }
 
-    @PostMapping("/add-assessment/{courseId}/{studentId}")
+    @GetMapping("/{studentId}/enrolled-course")
+    public ResponseEntity<List<EnrolledCourse>> findByCourseIdStudentId(@PathVariable String studentId){
+        return ResponseEntity.ok(enrolledCourseService.findCoursesByStudentId(studentId));
+    }
+
+    @PostMapping("/{studentId}/add-assessment/{courseId}")
     public ResponseEntity<EnrolledCourse> addAssessment(@PathVariable String courseId, @PathVariable String studentId, @RequestBody Grade grade){
         return ResponseEntity.ok(enrolledCourseService.addAssessment(courseId,studentId,grade));
     }
