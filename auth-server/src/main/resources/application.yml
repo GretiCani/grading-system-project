@@ -15,6 +15,10 @@ spring:
       database: user-db
   main:
     allow-bean-definition-overriding: true
+  zipkin:
+    base-url: http://zipkin:9411
+  application:
+    name: auth-server
 
 
 registeredClient:
@@ -37,6 +41,8 @@ logging:
     org.springframework.security: INFO
     org.springframework.security.oauth2: INFO
 spring:
+  application:
+    name: auth-server
   data:
     mongodb:
       uri: mongodb+srv://ikub:ikub123@bulding-cluster.ltijm.mongodb.net/?retryWrites=true&w=majority
@@ -45,6 +51,8 @@ spring:
     allow-bean-definition-overriding: true
   profiles:
     active: docker
+  zipkin:
+    base-url: http://zipkin:9411
 
 
 
