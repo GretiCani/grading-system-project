@@ -20,7 +20,10 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityAuthFilterChain(HttpSecurity http) throws Exception{
         return http.cors().and().csrf().disable().formLogin()
                 .and()
+                .formLogin().loginPage("/auth")
+                .and()
                 .authorizeRequests()
+                .antMatchers("/auth").permitAll()
                 .antMatchers("/auth/register").permitAll()
                 .anyRequest().authenticated()
                 .and()

@@ -53,7 +53,7 @@ public class AuthServiceConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
         OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
-        return http.formLogin().and().sessionManagement()
+        return http.formLogin().loginPage("/auth").and().sessionManagement()
                 .and()
                 .build();
     }
