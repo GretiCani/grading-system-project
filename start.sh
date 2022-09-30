@@ -1,44 +1,5 @@
-
-cd ./auth-server
-mvn clean package -DskipTests
-
-cd ..
-cd ./discovery-server 
-mvn clean package -DskipTests
-
-cd ..
-cd ./gateway-service
-mvn clean package -DskipTests
-
-cd ..
-cd ./professor-service
-mvn clean package -DskipTests
-
-cd ..
-cd ./student-service
-mvn clean package -DskipTests
-
-cd ..
-cd ./evaluation-service
-mvn clean package -DskipTests
-
-cd ..
-cd ./notification-service
-mvn clean package -DskipTests
-
-
-cd ..
-cd ./course-service
-mvn clean package -DskipTests
-
-
-cd ..
-
-cd ./docker
-
-docker-compose build
-docker-compose up 
-
-
-
-
+docker-compose -f ./docker/docker-compose-kafka.yml up -d 
+docker-compose -f ./docker/docker-compose-elastic-kibana.yml up -d 
+docker-compose -f ./docker/docker-compose-external-services.yml up  -d
+docker-compose -f ./docker/docker-compose-external-services.yml up --build -d
+docker-compose -f ./docker/docker-compose.yml up --build

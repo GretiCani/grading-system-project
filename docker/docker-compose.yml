@@ -2,25 +2,6 @@ version: '3.7'
 
 services:
 
-  # configuration-server:
-  #   build:
-  #     context: ../configuration-server
-  #     dockerfile: Dockerfile
-  #   networks:
-  #     -   dev_network
-  #   ports:
-  #     - 9999:9999
-
-  eureka-server:
-    build:
-      context: ../discovery-server
-      dockerfile: Dockerfile
-    networks:
-      - dev_network
-    ports:
-      - 8080:8080
-
-
   gateway-service:
     build:
       context: ../gateway-service
@@ -29,9 +10,6 @@ services:
       -   dev_network
     ports:
       - 8081:8081
-    
-    depends_on:
-      - eureka-server
     labels:
       collect_logs_with_filebeat: "true"
       decode_log_event_to_json_object: "true"
@@ -42,9 +20,7 @@ services:
       dockerfile: Dockerfile
     networks:
       - dev_network
-    
     depends_on:
-      - eureka-server
       - gateway-service
     labels:
       collect_logs_with_filebeat: "true"
@@ -58,7 +34,6 @@ services:
       - dev_network
     
     depends_on:
-      - eureka-server
       - gateway-service
     labels:
       collect_logs_with_filebeat: "true"
@@ -72,7 +47,6 @@ services:
       - dev_network
     
     depends_on:
-      - eureka-server
       - gateway-service
     labels:
       collect_logs_with_filebeat: "true"
@@ -86,7 +60,6 @@ services:
       - dev_network
     
     depends_on:
-      - eureka-server
       - gateway-service
     labels:
       collect_logs_with_filebeat: "true"
@@ -100,7 +73,6 @@ services:
       - dev_network
     
     depends_on:
-      - eureka-server
       - gateway-service
     labels:
       collect_logs_with_filebeat: "true"

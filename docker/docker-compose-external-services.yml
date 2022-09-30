@@ -18,6 +18,26 @@ services:
       -   dev_network
     ports:
       - 9000:9000
+
+  configuration-server:
+    build:
+      context: ../configuration-server
+      dockerfile: Dockerfile
+    networks:
+      -   dev_network
+    ports:
+      - 9999:9999
+
+  eureka-server:
+    build:
+      context: ../discovery-server
+      dockerfile: Dockerfile
+    networks:
+      - dev_network
+    ports:
+      - 8080:8080
+    depends_on:
+      - configuration-server
       
 networks:
   dev_network:

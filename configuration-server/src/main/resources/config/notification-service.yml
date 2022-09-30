@@ -1,3 +1,4 @@
+
 spring:
   application:
     name: notification-service
@@ -5,8 +6,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://auth-server:9000
-          jwk-set-uri: http://auth-server:9000/oauth2/jwks
+          issuer-uri: http://localhost:9000
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
   cloud:
     config:
       enabled: true
@@ -15,7 +16,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: kafka:9092
+          brokers: localhost:29092
         bindings:
           sendNotification-in-0:
             consumer:
@@ -28,8 +29,6 @@ spring:
             use-native-decoding: true
   zipkin:
     base-url: http://localhost:9411
-  profiles:
-    active: docker
 
 management:
   endpoint:
