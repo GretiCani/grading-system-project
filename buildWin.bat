@@ -1,28 +1,28 @@
 @echo off
 
-cd "%CD%\configuration-server"
-mvn "clean" "package" "-DskipTests"
-cd "%CD%."
-cd "%CD%\auth-server"
-mvn "clean" "package" "-DskipTests"
-cd "%CD%."
-cd "%CD%\discovery-server"
-mvn "clean" "package" "-DskipTests"
-cd "%CD%."
-cd "%CD%\gateway-service"
-mvn "clean" "package" "-DskipTests"
-cd "%CD%."
-cd "%CD%\professor-service"
-mvn "clean" "package" "-DskipTests"
-cd "%CD%."
-cd "%CD%\student-service"
-mvn "clean" "package" "-DskipTests"
-cd "%CD%."
-cd "%CD%\evaluation-service"
-mvn "clean" "package" "-DskipTests"
-cd "%CD%."
-cd "%CD%\notification-service"
-mvn "clean" "package" "-DskipTests"
-cd "%CD%."
-cd "%CD%\course-service"
-mvn "clean" "package" "-DskipTests"
+call cd "%CD%\configuration-server"
+call mvn "clean" "package" "-DskipTests"
+call cd ..
+call cd "%CD%\auth-server"
+call mvn "clean" "package" "-DskipTests"
+call cd ..
+call cd "%CD%\discovery-server"
+call mvn "clean" "package" "-DskipTests"
+call cd ..
+call cd "%CD%\gateway-service"
+call mvn "clean" "package" "-DskipTests"
+call cd ..
+call cd "%CD%\professor-service"
+call mvn "clean" "package" "-DskipTests"
+call cd ..
+call cd "%CD%\student-service"
+call mvn "clean" "package" "-DskipTests"
+call cd ..
+call cd "%CD%\evaluation-service"
+call mvn "clean" "package" "-DskipTests"
+call cd ..
+call cd "%CD%\notification-service"
+call mvn "clean" "package" "-DskipTests"
+call cd ..
+call cd "%CD%\course-service"
+call mvn "clean" "package" "-DskipTests"
