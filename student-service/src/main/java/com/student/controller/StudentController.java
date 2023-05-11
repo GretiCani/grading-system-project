@@ -22,9 +22,6 @@ public class StudentController {
 
     @GetMapping("/ok")
     public String ok(){
-        IntStream.range(0,10).forEach(index -> {
-            log.info("student-service  info log "+1);
-        });
         return "student-service-ok";
     }
 

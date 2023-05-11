@@ -28,8 +28,8 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course update(String id, Course course) {
         return courseRepository.findById(id).map(c-> courseRepository.save(Course.builder()
-                .id(id).code(c.getCode()).semesterOffered(course.getSemesterOffered()).catalogData(course.getCatalogData())
-                .instructorId(c.getInstructorId()).name(course.getName()).build())).orElse(null);
+                .id(id).code(course.getCode()).semesterOffered(course.getSemesterOffered()).catalogData(course.getCatalogData())
+                .instructorId(course.getInstructorId()).name(course.getName()).build())).orElse(null);
     }
 
     @Override

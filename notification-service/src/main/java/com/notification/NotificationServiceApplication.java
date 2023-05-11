@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import java.util.function.Consumer;
 
 @Slf4j
-@EnableScheduling
 @EnableEurekaClient
 @SpringBootApplication
 public class NotificationServiceApplication {

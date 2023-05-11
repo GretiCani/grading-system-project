@@ -9,24 +9,7 @@ spring:
     config:
       server:
         native:
-          search-locations: src/main/resources/config
-        bootstrap: true
----
-server:
-  port: 9999
-spring:
-  application:
-    name: configuration-server
-  profiles:
-    active: docker
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/GretiCani/grading-config-repo
-          username: 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
-          password: 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
-          timeout: 10
+          search-locations: configuration-server/src/main/resources/config
         bootstrap: true
 
 

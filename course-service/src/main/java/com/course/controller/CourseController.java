@@ -4,6 +4,8 @@ import com.course.entity.AssessmentItem;
 import com.course.entity.Course;
 import com.course.service.AssessmentService;
 import com.course.service.CourseService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +23,9 @@ public class CourseController {
     private final CourseService courseService;
     private final AssessmentService assessmentService;
 
+
     @GetMapping("/ok")
     public String ok(){
-        IntStream.range(0,10).forEach(index -> {
-            log.info("course-service  info log "+1);
-        });
         return "course-service ok";
     }
 
@@ -38,7 +38,7 @@ public class CourseController {
     public ResponseEntity<Course> addCourse(@RequestBody Course course){
         return ResponseEntity.ok(courseService.add(course));
     }
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Course>updateCourse(@PathVariable String id,@RequestBody Course course){
         return ResponseEntity.ok(courseService.update(id,course));
     }

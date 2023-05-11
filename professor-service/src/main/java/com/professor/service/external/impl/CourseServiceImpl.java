@@ -2,6 +2,7 @@ package com.professor.service.external.impl;
 
 import com.professor.model.Course;
 import com.professor.service.external.CourseService;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import java.util.List;
 
+@Data
 @RequiredArgsConstructor
 @Service
 public class CourseServiceImpl implements CourseService {

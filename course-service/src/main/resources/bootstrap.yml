@@ -2,11 +2,3 @@ spring:
   cloud:
     config:
       uri: http://localhost:9999
-
----
-spring:
-  profiles:
-    active: docker
-  cloud:
-    config:
-      uri: http://configuration-server:9999

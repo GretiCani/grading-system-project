@@ -12,9 +12,6 @@ public class NotificationController {
 
     @GetMapping("/ok")
     public String ok(){
-        IntStream.range(0,10).forEach(index -> {
-            log.info("notification-service  info log "+1);
-        });
         return "notification-service ok";
     }
 }
