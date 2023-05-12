@@ -21,6 +21,9 @@ public class EvaluationController {
 
     @GetMapping("/ok")
     public String ok(){
+        IntStream.range(0,10).forEach(index -> {
+            log.info("evaluation-service  info log "+1);
+        });
         return "evaluation-service ok";
     }
 

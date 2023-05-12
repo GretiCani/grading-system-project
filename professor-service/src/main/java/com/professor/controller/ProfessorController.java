@@ -27,24 +27,27 @@ public class ProfessorController {
 
     @GetMapping("/ok")
     public String ok(){
+        IntStream.range(0,10).forEach(index -> {
+            log.info("professor-service  info log "+1);
+        });
         return "professor-service ok";
     }
 
-//    @PreAuthorize("hasAuthority('ROLE_INSTRUCTOR')")
+    @PreAuthorize("hasAuthority('ROLE_INSTRUCTOR')")
     @PostMapping("/add-student")
     public ResponseEntity<EnrolledCourse> addCourseToStudent(@RequestBody EnrolledCourse course){
 
         return ResponseEntity.ok(studentService.addCourseToStudent(course));
     }
 
-//    @PreAuthorize("hasAuthority('ROLE_INSTRUCTOR')")
+    @PreAuthorize("hasAuthority('ROLE_INSTRUCTOR')")
     @PostMapping("/add-assessment")
     public ResponseEntity<EnrolledCourse> addAssessmentToStudent(@RequestBody AssessmentItem assessmentItem){
 
         return ResponseEntity.ok(studentService.addAssessmentToStudent(assessmentItem));
     }
 
-//    @PreAuthorize("hasAuthority('ROLE_INSTRUCTOR')")
+    @PreAuthorize("hasAuthority('ROLE_INSTRUCTOR')")
     @GetMapping("/get-courses/{instructorId}")
     public ResponseEntity<List<Course>> getCourses(@PathVariable String instructorId){
         return ResponseEntity.ok(courseService.getCourses(instructorId));

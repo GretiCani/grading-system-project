@@ -10,6 +10,9 @@ services:
       -   dev_network
     ports:
       - 8081:8081
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
 
   professor-service:
     build:
@@ -19,6 +22,9 @@ services:
       - dev_network
     depends_on:
       - gateway-service
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
   
   student-service:
     build:
@@ -26,9 +32,12 @@ services:
       dockerfile: Dockerfile
     networks:
       - dev_network
-
+    
     depends_on:
       - gateway-service
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
 
   evaluation-service:
     build:
@@ -36,9 +45,12 @@ services:
       dockerfile: Dockerfile
     networks:
       - dev_network
-
+    
     depends_on:
       - gateway-service
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
 
   notification-service:
     build:
@@ -46,9 +58,12 @@ services:
       dockerfile: Dockerfile
     networks:
       - dev_network
-
+    
     depends_on:
       - gateway-service
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
 
   course-service:
     build:
@@ -56,9 +71,12 @@ services:
       dockerfile: Dockerfile
     networks:
       - dev_network
-
+    
     depends_on:
       - gateway-service
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
       
 networks:
   dev_network:

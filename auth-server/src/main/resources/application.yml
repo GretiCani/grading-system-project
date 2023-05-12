@@ -1,5 +1,7 @@
 server:
   port: 9000
+
+
 logging:
   level:
     root: INFO
@@ -7,21 +9,14 @@ logging:
     org.springframework.security: INFO
     org.springframework.security.oauth2: INFO
 spring:
-
   data:
     mongodb:
       uri: mongodb+srv://ikub:ikub123@bulding-cluster.ltijm.mongodb.net/?retryWrites=true&w=majority
       database: user-db
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:9000
-          jwk-set-uri: http://localhost:9000/oauth2/jwks
   main:
     allow-bean-definition-overriding: true
   zipkin:
-    base-url: http://localhost:9411
+    base-url: http://zipkin:9411
   application:
     name: auth-server
 
@@ -29,9 +24,42 @@ spring:
 registeredClient:
   clientId: ikub
   clientSecret: secret
-  redirectUri: http://127.0.0.1:4200/authorized
+  redirectUri: http://172.17.0.1:4200/authorized
   issuerUri: http://localhost:9000
   tokenParam: id_token
   roleClaim: authorities
 
+--- 
 
+server:
+  port: 9000
+  
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+spring:
+  application:
+    name: auth-server
+  data:
+    mongodb:
+      uri: mongodb+srv://ikub:ikub123@bulding-cluster.ltijm.mongodb.net/?retryWrites=true&w=majority
+      database: user-db
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: docker
+  zipkin:
+    base-url: http://zipkin:9411
+
+
+
+registeredClient:
+  clientId: ikub
+  clientSecret: secret
+  redirectUri: http://172.17.0.1:4200/authorized
+  issuerUri: http://auth-server:9000
+  tokenParam: id_token
+  roleClaim: authorities

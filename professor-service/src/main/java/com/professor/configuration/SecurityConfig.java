@@ -25,13 +25,7 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 				.authorizeRequests()
-				.antMatchers("/actuator/health/**").permitAll()
-				.antMatchers("/webjars/**").permitAll()
-				.antMatchers("/swagger-ui.html").permitAll()
-				.antMatchers("/swagger-ui/**").permitAll()
-				.antMatchers("/course-service/v3/api-docs/**").permitAll()
-				.antMatchers("/swagger-resources/**").permitAll()
-				.antMatchers("/v3/api-docs/**").permitAll()
+				.antMatchers("/actuator/prometheus").permitAll()
 				.anyRequest().authenticated()
 				.and().oauth2ResourceServer()
 				.jwt();

@@ -1,4 +1,0 @@
-spring:
-  cloud:
-    config:
-      uri: http://configuration-server:9999

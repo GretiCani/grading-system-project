@@ -1,6 +1,5 @@
 @echo off
 
-docker-compose "-f" "%CD%\docker\docker-compose-mongo.yml" "down"
 docker-compose "-f" "%CD%\docker\docker-compose-kafka.yml" "down"
 docker-compose "-f" "%CD%\docker\docker-compose-elastic-kibana.yml" "down"
 docker-compose "-f" "%CD%\docker\docker-compose-pro-grafana.yml" "down"

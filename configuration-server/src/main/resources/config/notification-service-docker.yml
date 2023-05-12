@@ -29,6 +29,8 @@ spring:
             use-native-decoding: true
   zipkin:
     base-url: http://zipkin:9411
+#  profiles:
+#    active: docker
 
 management:
   endpoint:

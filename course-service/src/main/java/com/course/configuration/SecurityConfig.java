@@ -1,8 +1,6 @@
 package com.course.configuration;
 
-import org.springdoc.core.AbstractSwaggerUiConfigProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
@@ -18,13 +16,6 @@ public class SecurityConfig {
 		http
 				.authorizeRequests()
 				.antMatchers("/actuator/prometheus").permitAll()
-				.antMatchers("/actuator/health/**").permitAll()
-				.antMatchers("/webjars/**").permitAll()
-				.antMatchers("/swagger-ui.html").permitAll()
-				.antMatchers("/swagger-ui/**").permitAll()
-				.antMatchers("/course-service/v3/api-docs/**").permitAll()
-				.antMatchers("/swagger-resources/**").permitAll()
-				.antMatchers("/v3/api-docs/**").permitAll()
 				.anyRequest().authenticated()
 				.and().oauth2ResourceServer()
 				.jwt();
