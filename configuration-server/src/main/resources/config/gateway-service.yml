@@ -26,6 +26,10 @@ spring:
             - Path=/professor-service/**
           filters:
             - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: gatewayCircuitBreaker
+                fallbackUri: forward:/fallback/professor-service
         - id: evaluation-service
           uri: lb://evaluation-service
           predicates:
