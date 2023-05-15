@@ -56,3 +56,5 @@ resource:
     baseUrl: http://localhost:8084/student
 kafkaTopics:
   notification: notifications
+
+swagger.server.uri: http://localhost:8081/evaluation-service

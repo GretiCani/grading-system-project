@@ -49,3 +49,5 @@ resource:
     baseUrl: http://course-service:8087/course
   studentService:
     baseUrl: http://student-service:8084/student
+
+swagger.server.uri: http://gatewaw-service:8081/professor-service

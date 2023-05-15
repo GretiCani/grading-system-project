@@ -36,3 +36,5 @@ eureka:
     prefer-ip-address: true
 server:
   port: 8087
+
+swagger.server.uri: http://gateway-service:8081/course-service

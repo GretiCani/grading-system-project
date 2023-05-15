@@ -56,3 +56,5 @@ resource:
     baseUrl: http://student-service:8084/student
 kafkaTopics:
   notification: notifications
+
+swagger.server.uri: http://gateway-service:8081/evaluation-service

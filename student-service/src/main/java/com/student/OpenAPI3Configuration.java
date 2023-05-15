@@ -9,7 +9,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.context.annotation.Configuration;
 
-@OpenAPIDefinition(servers = { @Server(url = "http://localhost:8081/student-service")}, info = @Info(title = "Student Service APIs",
+@OpenAPIDefinition(servers = { @Server(url = "${swagger.server.uri}")}, info = @Info(title = "Student Service APIs",
         description = "This lists all the Student Service API Calls. The Calls are OAuth2 secured, "
                 + "so please use your Bearer token to test them out.",
         version = "v1.0"),security ={@SecurityRequirement(name = "bearerToken")})
