@@ -53,4 +53,4 @@ eureka:
 server:
   port: 8082
 
-swagger.server.uri: http://gateway-service:8081/notification-service
+swagger.server.uri: http://host.docker.internal:8081/notification-service

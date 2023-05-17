@@ -20,9 +20,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebFluxSecurity
 public class SecurityConfig {
 
-	@Value("${server.port}")
-	private String test;
-
 	@Bean
 	SecurityWebFilterChain securityFilterChain(ServerHttpSecurity http) {
 		http

@@ -50,4 +50,4 @@ resource:
   studentService:
     baseUrl: http://student-service:8084/student
 
-swagger.server.uri: http://gatewaw-service:8081/professor-service
+swagger.server.uri: http://host.docker.internal:8081/professor-service

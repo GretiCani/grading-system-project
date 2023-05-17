@@ -26,3 +26,4 @@ call mvn "clean" "package" "-DskipTests"
 call cd ..
 call cd "%CD%\course-service"
 call mvn "clean" "package" "-DskipTests"
+call cd ..

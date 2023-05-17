@@ -57,4 +57,4 @@ resource:
 kafkaTopics:
   notification: notifications
 
-swagger.server.uri: http://gateway-service:8081/evaluation-service
+swagger.server.uri: http://host.docker.internal:8081/evaluation-service

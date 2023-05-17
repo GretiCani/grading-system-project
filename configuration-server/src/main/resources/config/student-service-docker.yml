@@ -40,4 +40,4 @@ eureka:
 server:
   port: 8084
 
-swagger.server.uri: http://gateway-service:8081/student-service
+swagger.server.uri: http://host.docker.internal:8081/student-service
