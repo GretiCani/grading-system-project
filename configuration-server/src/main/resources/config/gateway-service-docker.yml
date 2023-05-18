@@ -69,6 +69,8 @@ management:
 springdoc:
   swagger-ui:
     urls:
+      - name: "Gateway Service APIs"
+        url: "/v3/api-docs"
       - name: "Course Service APIs"
         url: "/course-service/v3/api-docs"
       - name: "Professor Service APIs"
